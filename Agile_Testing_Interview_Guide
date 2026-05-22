@@ -1,0 +1,1120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agile Testing Interview Guide - Complete Reference</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.7; color: #2d3748; background: #f7fafc; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 20px; }
+        h1 { text-align: center; font-size: 2.2rem; color: #1a202c; margin: 40px 0 10px; }
+        .subtitle { text-align: center; color: #718096; margin-bottom: 40px; font-size: 1.1rem; }
+        .toc { background: #fff; border-radius: 12px; padding: 30px; margin-bottom: 40px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+        .toc h2 { color: #2b6cb0; margin-bottom: 15px; }
+        .toc ul { list-style: none; columns: 2; }
+        .toc li { padding: 4px 0; }
+        .toc a { color: #4a5568; text-decoration: none; border-bottom: 1px dashed #cbd5e0; }
+        .toc a:hover { color: #2b6cb0; }
+        .chapter { background: #fff; border-radius: 12px; padding: 35px 40px; margin-bottom: 30px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); border-left: 5px solid #48bb78; }
+        .chapter h2 { color: #276749; font-size: 1.6rem; margin-bottom: 20px; }
+        .chapter h3 { color: #2b6cb0; margin: 20px 0 10px; font-size: 1.2rem; }
+        .chapter h4 { color: #4a5568; margin: 15px 0 8px; }
+        .chapter p { margin-bottom: 12px; }
+        .chapter ul, .chapter ol { margin: 8px 0 16px 25px; }
+        .chapter li { margin-bottom: 6px; }
+        .highlight { background: #ebf8ff; border-left: 4px solid #3182ce; padding: 12px 16px; margin: 15px 0; border-radius: 4px; }
+        .interview-q { background: #fefcbf; border-left: 4px solid #d69e2e; padding: 12px 16px; margin: 10px 0; border-radius: 4px; }
+        .interview-q strong { color: #744210; }
+        .comparison-table { width: 100%; border-collapse: collapse; margin: 15px 0; }
+        .comparison-table th, .comparison-table td { border: 1px solid #e2e8f0; padding: 10px 14px; text-align: left; }
+        .comparison-table th { background: #edf2f7; color: #2d3748; }
+        .comparison-table tr:nth-child(even) { background: #f7fafc; }
+        .tip { background: #f0fff4; border-left: 4px solid #48bb78; padding: 12px 16px; margin: 15px 0; border-radius: 4px; }
+        .tip::before { content: "💡 Tip: "; font-weight: bold; color: #276749; }
+        .example { background: #faf5ff; border-left: 4px solid #805ad5; padding: 12px 16px; margin: 15px 0; border-radius: 4px; }
+        .example::before { content: "📌 Example: "; font-weight: bold; color: #553c9a; }
+        code { background: #edf2f7; padding: 2px 6px; border-radius: 3px; font-size: 0.9em; }
+        .badge { display: inline-block; padding: 3px 10px; border-radius: 12px; font-size: 0.8rem; font-weight: 600; margin-right: 6px; }
+        .badge-green { background: #c6f6d5; color: #276749; }
+        .badge-blue { background: #bee3f8; color: #2a4365; }
+        .badge-orange { background: #feebc8; color: #744210; }
+        .flow-diagram { background: #edf2f7; padding: 15px; border-radius: 8px; text-align: center; margin: 15px 0; font-family: monospace; font-size: 1rem; }
+        .flow-diagram .arrow { color: #e53e3e; font-weight: bold; }
+        @media (max-width: 768px) { .toc ul { columns: 1; } .chapter { padding: 20px; } }
+    </style>
+</head>
+<body>
+<div class="container">
+
+<h1>📘 Agile Testing Interview Guide</h1>
+<p class="subtitle">Complete Reference: Manual Testing + Automation Basics + Jira Workflows</p>
+
+<!-- TABLE OF CONTENTS -->
+<div class="toc">
+    <h2>📑 Table of Contents</h2>
+    <ul>
+        <li><a href="#ch1">Chapter 1: Software Testing Fundamentals</a></li>
+        <li><a href="#ch2">Chapter 2: Testing Types & Concepts</a></li>
+        <li><a href="#ch3">Chapter 3: Core Testing Types</a></li>
+        <li><a href="#ch4">Chapter 4: Integration & System Testing</a></li>
+        <li><a href="#ch5">Chapter 5: Test Case Design</a></li>
+        <li><a href="#ch6">Chapter 6: Defect Lifecycle & Jira</a></li>
+        <li><a href="#ch7">Chapter 7: Agile Basics</a></li>
+        <li><a href="#ch8">Chapter 8: Agile Ceremonies</a></li>
+        <li><a href="#ch9">Chapter 9: Sprint Retrospective</a></li>
+        <li><a href="#ch10">Chapter 10: User Stories & Estimation</a></li>
+        <li><a href="#ch11">Chapter 11: Story Points & Velocity</a></li>
+        <li><a href="#ch12">Chapter 12: Story Completion & DoD</a></li>
+        <li><a href="#ch13">Chapter 13: Regression Strategy</a></li>
+        <li><a href="#ch14">Chapter 14: Basics of Automation Testing</a></li>
+        <li><a href="#ch15">Chapter 15: Agile Testing in Real-Time Project</a></li>
+    </ul>
+</div>
+
+<!-- CHAPTER 1 -->
+<div class="chapter" id="ch1">
+    <h2>Chapter 1: Software Testing Fundamentals</h2>
+
+    <h3>What is Software?</h3>
+    <p>Software is a set of instructions (programs), data, and documentation that tells a computer how to perform specific tasks. Examples: banking apps, e-commerce websites, mobile applications.</p>
+
+    <h3>What is Software Testing?</h3>
+    <p>Software Testing is the process of evaluating a software application to detect differences between the expected output and the actual output. It ensures the product is <strong>bug-free, meets requirements, and satisfies user needs</strong>.</p>
+
+    <div class="highlight">
+        <strong>Key Definition:</strong> Testing is not just finding bugs — it's about building confidence that the software works correctly under various conditions.
+    </div>
+
+    <h3>Why is Testing Needed?</h3>
+    <ul>
+        <li><strong>Quality Assurance:</strong> Ensures the product meets standards and specifications</li>
+        <li><strong>Cost Savings:</strong> Finding bugs early is 10-100x cheaper than fixing in production</li>
+        <li><strong>Security:</strong> Identifies vulnerabilities before hackers exploit them</li>
+        <li><strong>User Satisfaction:</strong> Delivers a reliable, user-friendly product</li>
+        <li><strong>Compliance:</strong> Meets regulatory and industry standards</li>
+        <li><strong>Reputation:</strong> Prevents costly failures that damage brand trust</li>
+    </ul>
+
+    <h3>SDLC vs STLC</h3>
+    <table class="comparison-table">
+        <tr><th>Aspect</th><th>SDLC (Software Development Life Cycle)</th><th>STLC (Software Testing Life Cycle)</th></tr>
+        <tr><td>Purpose</td><td>Develop the software product</td><td>Test the software product</td></tr>
+        <tr><td>Phases</td><td>Requirements → Design → Development → Testing → Deployment → Maintenance</td><td>Requirement Analysis → Test Planning → Test Design → Environment Setup → Execution → Closure</td></tr>
+        <tr><td>Focus</td><td>Building the product</td><td>Validating the product</td></tr>
+        <tr><td>Output</td><td>Working software</td><td>Test reports, defect logs</td></tr>
+        <tr><td>Who</td><td>Developers, Architects, PMs</td><td>QA Engineers, Test Leads</td></tr>
+    </table>
+
+    <h4>STLC Phases in Detail:</h4>
+    <ol>
+        <li><strong>Requirement Analysis:</strong> QA understands what to test, identifies testable requirements</li>
+        <li><strong>Test Planning:</strong> Define scope, strategy, resources, schedule, tools</li>
+        <li><strong>Test Case Design:</strong> Write test cases, prepare test data</li>
+        <li><strong>Environment Setup:</strong> Prepare hardware/software for testing</li>
+        <li><strong>Test Execution:</strong> Run test cases, log defects</li>
+        <li><strong>Test Closure:</strong> Generate reports, lessons learned, metrics</li>
+    </ol>
+
+    <h3>Test Levels</h3>
+    <table class="comparison-table">
+        <tr><th>Level</th><th>What</th><th>Who</th><th>Example</th></tr>
+        <tr><td><strong>Unit Testing</strong></td><td>Test individual functions/methods</td><td>Developers</td><td>Testing a calculateTotal() function</td></tr>
+        <tr><td><strong>Integration Testing</strong></td><td>Test interaction between modules</td><td>Developers/QA</td><td>Login module calling database</td></tr>
+        <tr><td><strong>System Testing</strong></td><td>Test entire application end-to-end</td><td>QA Team</td><td>Complete order flow in e-commerce</td></tr>
+        <tr><td><strong>UAT (User Acceptance Testing)</strong></td><td>Validate against business needs</td><td>End Users/Business</td><td>Client verifying the app meets their needs</td></tr>
+    </table>
+
+    <h3>Error vs Bug vs Defect</h3>
+    <table class="comparison-table">
+        <tr><th>Term</th><th>Definition</th><th>Who Causes It</th><th>When Found</th></tr>
+        <tr><td><strong>Error (Mistake)</strong></td><td>Human mistake in understanding or coding</td><td>Developer</td><td>During development</td></tr>
+        <tr><td><strong>Bug</strong></td><td>Flaw found during testing</td><td>Found by Tester</td><td>During testing</td></tr>
+        <tr><td><strong>Defect</strong></td><td>Deviation from expected behavior (logged formally)</td><td>Found by Tester</td><td>Logged in tracking tool</td></tr>
+    </table>
+    <div class="tip">In interviews, you can say: "An error leads to a defect in code, which manifests as a bug during testing."</div>
+
+    <h3>Static vs Dynamic Testing</h3>
+    <table class="comparison-table">
+        <tr><th>Aspect</th><th>Static Testing</th><th>Dynamic Testing</th></tr>
+        <tr><td>Execution</td><td>Code is NOT executed</td><td>Code IS executed</td></tr>
+        <tr><td>Methods</td><td>Reviews, Walkthroughs, Inspections</td><td>Running test cases</td></tr>
+        <tr><td>When</td><td>Early (before execution)</td><td>After code is ready</td></tr>
+        <tr><td>Finds</td><td>Logical errors, standards violations</td><td>Runtime errors, functional bugs</td></tr>
+        <tr><td>Examples</td><td>Code review, requirement review</td><td>Functional testing, regression testing</td></tr>
+    </table>
+
+    <h3>Manual vs Automation Testing</h3>
+    <table class="comparison-table">
+        <tr><th>Aspect</th><th>Manual Testing</th><th>Automation Testing</th></tr>
+        <tr><td>Execution</td><td>Human executes test cases</td><td>Tools/scripts execute tests</td></tr>
+        <tr><td>Speed</td><td>Slower</td><td>Faster (after setup)</td></tr>
+        <tr><td>Cost</td><td>Lower initial, higher long-term</td><td>Higher initial, lower long-term</td></tr>
+        <tr><td>Best For</td><td>Exploratory, UI, ad-hoc, one-time</td><td>Regression, repetitive, data-driven</td></tr>
+        <tr><td>Accuracy</td><td>Prone to human error</td><td>Highly accurate (consistent)</td></tr>
+        <tr><td>Skills</td><td>Domain knowledge, logic</td><td>Programming + tool knowledge</td></tr>
+    </table>
+
+    <div class="interview-q">
+        <strong>Q: What is software testing and why is it important?</strong><br>
+        A: Software testing is the process of verifying that a software application works as expected and meets requirements. It's important because it ensures quality, reduces costs by catching bugs early, protects security, ensures user satisfaction, and prevents failures in production that could damage business reputation and revenue.
+    </div>
+</div>
+
+<!-- CHAPTER 2 -->
+<div class="chapter" id="ch2">
+    <h2>Chapter 2: Testing Types & Concepts</h2>
+
+    <h3>Functional vs Non-Functional Testing</h3>
+    <table class="comparison-table">
+        <tr><th>Aspect</th><th>Functional Testing</th><th>Non-Functional Testing</th></tr>
+        <tr><td>Focus</td><td>WHAT the system does</td><td>HOW WELL the system does it</td></tr>
+        <tr><td>Tests</td><td>Features, business logic, workflows</td><td>Performance, security, usability, scalability</td></tr>
+        <tr><td>Examples</td><td>Login works, payment processed, search returns results</td><td>Page loads in 2s, supports 1000 users, works on mobile</td></tr>
+        <tr><td>Types</td><td>Smoke, Sanity, Regression, Integration</td><td>Load, Stress, Security, Compatibility, Usability</td></tr>
+    </table>
+
+    <h3>Black-Box vs White-Box Testing</h3>
+    <table class="comparison-table">
+        <tr><th>Aspect</th><th>Black-Box Testing</th><th>White-Box Testing</th></tr>
+        <tr><td>Knowledge</td><td>No knowledge of internal code</td><td>Full knowledge of internal code</td></tr>
+        <tr><td>Focus</td><td>Input → Output (behavior)</td><td>Code logic, paths, branches</td></tr>
+        <tr><td>Who</td><td>QA/Testers</td><td>Developers</td></tr>
+        <tr><td>Techniques</td><td>EP, BVA, Decision Tables</td><td>Statement coverage, Branch coverage, Path coverage</td></tr>
+        <tr><td>Also Called</td><td>Behavioral testing</td><td>Structural testing, Glass-box testing</td></tr>
+    </table>
+
+    <h3>Testing Techniques (Black-Box)</h3>
+
+    <h4>1. Equivalence Partitioning (EP)</h4>
+    <p>Divides input data into <strong>equivalent groups/partitions</strong> where all values in a partition are expected to behave the same. You test ONE value from each partition.</p>
+    <div class="example">
+        Age field accepts 18-60:<br>
+        • Valid partition: 18-60 (test with 30)<br>
+        • Invalid partition 1: &lt;18 (test with 10)<br>
+        • Invalid partition 2: &gt;60 (test with 75)<br>
+        → Only 3 test cases instead of testing every number!
+    </div>
+
+    <h4>2. Boundary Value Analysis (BVA)</h4>
+    <p>Tests at the <strong>edges/boundaries</strong> of partitions because bugs are most likely at boundaries.</p>
+    <div class="example">
+        Age field accepts 18-60:<br>
+        • Boundary values: 17, 18, 19, 59, 60, 61<br>
+        • Test: just below min, min, just above min, just below max, max, just above max
+    </div>
+
+    <h4>3. Decision Table Testing</h4>
+    <p>Used when there are <strong>multiple conditions</strong> that lead to different outcomes. Creates a table of all condition combinations.</p>
+    <div class="example">
+        Login: Username correct? Password correct?<br>
+        • T + T = Login success<br>
+        • T + F = "Invalid password"<br>
+        • F + T = "Invalid username"<br>
+        • F + F = "Invalid credentials"
+    </div>
+
+    <h3>Positive vs Negative Testing</h3>
+    <table class="comparison-table">
+        <tr><th>Positive Testing</th><th>Negative Testing</th></tr>
+        <tr><td>Tests with VALID inputs</td><td>Tests with INVALID inputs</td></tr>
+        <tr><td>Verifies system works correctly</td><td>Verifies system handles errors gracefully</td></tr>
+        <tr><td>Example: Login with correct credentials</td><td>Example: Login with wrong password, empty fields, SQL injection</td></tr>
+    </table>
+
+    <h3>Test Scenarios vs Test Cases</h3>
+    <table class="comparison-table">
+        <tr><th>Test Scenario</th><th>Test Case</th></tr>
+        <tr><td>High-level "what to test"</td><td>Detailed "how to test"</td></tr>
+        <tr><td>One-liner</td><td>Has steps, data, expected result</td></tr>
+        <tr><td>Example: "Verify user can login"</td><td>Step 1: Open URL, Step 2: Enter username "admin", Step 3: Enter password "pass123", Step 4: Click Login → Expected: Dashboard displayed</td></tr>
+    </table>
+
+    <div class="interview-q">
+        <strong>Q: Design test cases for a login page using EP & BVA.</strong><br>
+        A: <strong>EP:</strong> Valid username + valid password (valid partition), invalid username (invalid partition), empty fields (invalid partition), special characters (invalid partition).<br>
+        <strong>BVA:</strong> If username is 6-20 chars: test with 5 chars (invalid), 6 chars (valid boundary), 7 chars (valid), 19 chars (valid), 20 chars (valid boundary), 21 chars (invalid).
+    </div>
+</div>
+
+<!-- CHAPTER 3 -->
+<div class="chapter" id="ch3">
+    <h2>Chapter 3: Core Testing Types (Interview Focus)</h2>
+
+    <h3>Smoke Testing</h3>
+    <p><strong>Definition:</strong> A quick, shallow, wide test to check if the <strong>critical/core functionalities</strong> of a build work. Also called <strong>"Build Verification Testing"</strong>.</p>
+    
+    <div class="highlight">
+        <strong>Purpose:</strong> To decide whether the build is stable enough for further detailed testing.<br>
+        <strong>When:</strong> Performed on EVERY new build before any other testing begins.<br>
+        <strong>Who:</strong> QA team (sometimes developers).<br>
+        <strong>Duration:</strong> Quick (30 min - 2 hours).
+    </div>
+
+    <div class="example">
+        E-commerce smoke test:<br>
+        ✅ App launches successfully<br>
+        ✅ Login works<br>
+        ✅ Homepage loads<br>
+        ✅ Search returns results<br>
+        ✅ Add to cart works<br>
+        ✅ Payment page loads
+    </div>
+
+    <div class="interview-q">
+        <strong>Q: What happens if smoke testing fails?</strong><br>
+        A: The build is REJECTED and sent back to the development team for fixing. No further testing is performed on that build. The team waits for a new, fixed build. This saves time by not testing an unstable build.
+    </div>
+
+    <h3>Sanity Testing</h3>
+    <p><strong>Definition:</strong> A narrow, deep test focused on <strong>specific functionality or bug fix</strong> to verify it works correctly. It checks whether a particular section is still working after a minor change.</p>
+
+    <div class="highlight">
+        <strong>Purpose:</strong> To verify that a specific bug fix or feature change works without further issues.<br>
+        <strong>When:</strong> After receiving a build with minor fixes or changes.<br>
+        <strong>Scope:</strong> Narrow and focused (only the changed area).<br>
+        <strong>Duration:</strong> Quick, targeted.
+    </div>
+
+    <div class="example">
+        Bug was fixed: "Discount not applying on checkout"<br>
+        Sanity test: Only test the discount functionality on checkout — not the entire app.
+    </div>
+
+    <h3>Smoke vs Sanity Testing</h3>
+    <table class="comparison-table">
+        <tr><th>Aspect</th><th>Smoke Testing</th><th>Sanity Testing</th></tr>
+        <tr><td>Scope</td><td>Wide (entire application)</td><td>Narrow (specific area)</td></tr>
+        <tr><td>Depth</td><td>Shallow</td><td>Deep (in focused area)</td></tr>
+        <tr><td>When</td><td>On every new build</td><td>After bug fix / minor change</td></tr>
+        <tr><td>Purpose</td><td>Is the build stable?</td><td>Is the fix working?</td></tr>
+        <tr><td>Analogy</td><td>Health checkup (all organs)</td><td>Specialist check (one organ)</td></tr>
+        <tr><td>If Fails</td><td>Build rejected entirely</td><td>Specific module sent back for fix</td></tr>
+        <tr><td>Documentation</td><td>Usually scripted</td><td>Usually unscripted</td></tr>
+    </table>
+
+    <h3>Regression Testing</h3>
+    <p><strong>Definition:</strong> Re-testing the <strong>existing functionality</strong> to ensure that new code changes, bug fixes, or enhancements have NOT broken previously working features.</p>
+
+    <div class="highlight">
+        <strong>When to perform:</strong><br>
+        • After bug fixes<br>
+        • After new feature additions<br>
+        • After code refactoring<br>
+        • After environment changes<br>
+        • Before every release
+    </div>
+
+    <h3>Regression vs Retesting</h3>
+    <table class="comparison-table">
+        <tr><th>Aspect</th><th>Regression Testing</th><th>Retesting</th></tr>
+        <tr><td>Purpose</td><td>Check unchanged areas still work</td><td>Verify the specific bug is fixed</td></tr>
+        <tr><td>Scope</td><td>Other/related functionality</td><td>Same defect only</td></tr>
+        <tr><td>When</td><td>After any change</td><td>After bug fix</td></tr>
+        <tr><td>Can be automated?</td><td>YES (ideal candidate)</td><td>Usually manual</td></tr>
+        <tr><td>Example</td><td>After fixing login, test registration, profile, etc.</td><td>After fixing login bug, test login again</td></tr>
+    </table>
+
+    <h3>Exploratory Testing</h3>
+    <p>Simultaneous learning, test design, and test execution <strong>without predefined test cases</strong>. Tester uses domain knowledge, intuition, and creativity to explore the application.</p>
+    <ul>
+        <li>No scripts — tester explores freely</li>
+        <li>Good for finding unexpected bugs</li>
+        <li>Requires experienced testers</li>
+        <li>Used when requirements are incomplete or time is limited</li>
+    </ul>
+
+    <h3>Ad-hoc Testing</h3>
+    <p>Informal testing with <strong>no planning, no documentation, no structure</strong>. Random testing to break the application.</p>
+    <div class="tip">Exploratory testing is structured exploration; Ad-hoc is completely random with no learning objective.</div>
+</div>
+
+<!-- CHAPTER 4 -->
+<div class="chapter" id="ch4">
+    <h2>Chapter 4: Integration & System Testing</h2>
+
+    <h3>What is Integration Testing?</h3>
+    <p>Testing the <strong>interaction between two or more modules/components</strong> that have been individually unit tested. It verifies that modules work correctly together — data flows properly, interfaces are compatible, and combined behavior is as expected.</p>
+
+    <div class="highlight">
+        <strong>Why needed?</strong><br>
+        • Modules developed by different teams may have interface mismatches<br>
+        • Data format differences between modules<br>
+        • Timing/synchronization issues<br>
+        • Error handling between modules may fail
+    </div>
+
+    <h3>Types of Integration Testing</h3>
+
+    <h4>1. Top-Down Integration</h4>
+    <p>Testing starts from the <strong>top-level modules</strong> and moves downward. Lower modules that aren't ready are replaced with <strong>stubs</strong> (dummy modules that simulate lower-level behavior).</p>
+    <div class="flow-diagram">
+        Main Module (tested first)<br>
+        <span class="arrow">↓</span><br>
+        Sub-Module A (stub) → Sub-Module B (stub)<br>
+        <span class="arrow">↓</span><br>
+        Gradually replace stubs with real modules
+    </div>
+
+    <h4>2. Bottom-Up Integration</h4>
+    <p>Testing starts from the <strong>lowest-level modules</strong> and moves upward. Upper modules that aren't ready are replaced with <strong>drivers</strong> (dummy modules that call lower modules).</p>
+    <div class="flow-diagram">
+        Driver (simulates main module)<br>
+        <span class="arrow">↓</span><br>
+        Low-level Module A + Module B (tested first)<br>
+        <span class="arrow">↓</span><br>
+        Gradually replace drivers with real modules
+    </div>
+
+    <h4>3. Sandwich (Hybrid) Integration</h4>
+    <p>Combines both top-down and bottom-up approaches. Top modules tested with stubs, bottom modules tested with drivers, then they meet in the middle.</p>
+
+    <h4>4. Big Bang Integration</h4>
+    <p>All modules integrated and tested at once. Risky — hard to isolate failures. Not recommended for large systems.</p>
+
+    <table class="comparison-table">
+        <tr><th>Approach</th><th>Pros</th><th>Cons</th></tr>
+        <tr><td>Top-Down</td><td>Early prototype, tests critical paths first</td><td>Stubs needed, lower modules tested late</td></tr>
+        <tr><td>Bottom-Up</td><td>No stubs needed, tests foundation first</td><td>Drivers needed, UI tested late</td></tr>
+        <tr><td>Sandwich</td><td>Parallel testing, best of both</td><td>Complex to manage</td></tr>
+        <tr><td>Big Bang</td><td>Simple, no stubs/drivers</td><td>Hard to isolate bugs, late testing</td></tr>
+    </table>
+
+    <h3>System Testing</h3>
+    <p>Testing the <strong>complete, integrated application</strong> as a whole to verify it meets specified requirements. It's end-to-end testing of the entire system.</p>
+    <ul>
+        <li>Tests functional AND non-functional requirements</li>
+        <li>Performed in an environment similar to production</li>
+        <li>Done by QA team (independent of developers)</li>
+        <li>Includes: Functional, Performance, Security, Usability testing</li>
+    </ul>
+
+    <div class="example">
+        E-commerce System Test: User registers → Logs in → Searches product → Adds to cart → Enters address → Makes payment → Receives confirmation email → Checks order status
+    </div>
+
+    <h3>Interface/API Testing</h3>
+    <p>Testing the <strong>communication between systems</strong> via APIs (Application Programming Interfaces). Verifies request/response, data format, error codes, authentication.</p>
+    <ul>
+        <li><strong>Tool:</strong> Postman, REST Assured</li>
+        <li><strong>Tests:</strong> Status codes (200, 404, 500), response body, headers, authentication</li>
+        <li><strong>Methods:</strong> GET, POST, PUT, DELETE</li>
+    </ul>
+
+    <div class="interview-q">
+        <strong>Q: When does integration testing start?</strong><br>
+        A: Integration testing starts after unit testing is complete for at least two modules that need to interact. In Agile, it typically begins in Sprint 2 when multiple features from Sprint 1 and Sprint 2 need to work together.
+    </div>
+</div>
+
+<!-- CHAPTER 5 -->
+<div class="chapter" id="ch5">
+    <h2>Chapter 5: Test Case Design (Practical)</h2>
+
+    <h3>Test Scenario → Test Condition → Test Case Flow</h3>
+    <div class="flow-diagram">
+        Requirement → Test Scenario (what to test) → Test Condition (specific condition) → Test Case (step-by-step how to test)
+    </div>
+
+    <div class="example">
+        <strong>Requirement:</strong> User can login<br>
+        <strong>Test Scenario:</strong> Verify login functionality<br>
+        <strong>Test Conditions:</strong> Valid credentials, Invalid password, Empty fields, Locked account<br>
+        <strong>Test Case:</strong> TC001 - Steps to test valid login with expected result
+    </div>
+
+    <h3>Writing Effective Test Cases</h3>
+    <p>A good test case has:</p>
+    <table class="comparison-table">
+        <tr><th>Field</th><th>Description</th><th>Example</th></tr>
+        <tr><td>Test Case ID</td><td>Unique identifier</td><td>TC_LOGIN_001</td></tr>
+        <tr><td>Title</td><td>Brief description</td><td>Verify login with valid credentials</td></tr>
+        <tr><td>Precondition</td><td>What must be true before testing</td><td>User account exists, app is accessible</td></tr>
+        <tr><td>Test Steps</td><td>Step-by-step actions</td><td>1. Open URL 2. Enter username 3. Enter password 4. Click Login</td></tr>
+        <tr><td>Test Data</td><td>Input values</td><td>Username: admin, Password: Pass@123</td></tr>
+        <tr><td>Expected Result</td><td>What should happen</td><td>User redirected to dashboard</td></tr>
+        <tr><td>Actual Result</td><td>What actually happened</td><td>Filled after execution</td></tr>
+        <tr><td>Status</td><td>Pass/Fail/Blocked</td><td>Pass</td></tr>
+        <tr><td>Priority</td><td>How important</td><td>High</td></tr>
+    </table>
+
+    <h3>Priority vs Severity</h3>
+    <table class="comparison-table">
+        <tr><th>Aspect</th><th>Priority</th><th>Severity</th></tr>
+        <tr><td>Definition</td><td>How QUICKLY to fix</td><td>How BADLY it impacts the system</td></tr>
+        <tr><td>Set By</td><td>Business/PM/Test Lead</td><td>QA/Tester</td></tr>
+        <tr><td>Based On</td><td>Business impact, deadlines</td><td>Technical impact on functionality</td></tr>
+    </table>
+
+    <div class="example">
+        <strong>High Severity + High Priority:</strong> Payment gateway crashes — critical feature broken, fix immediately<br>
+        <strong>High Severity + Low Priority:</strong> App crashes on a rare browser — serious but few users affected<br>
+        <strong>Low Severity + High Priority:</strong> Company logo wrong on homepage — minor issue but visible to all<br>
+        <strong>Low Severity + Low Priority:</strong> Typo on "About Us" page — minor, fix when time permits
+    </div>
+
+    <h3>Sample: Smoke Test Cases for Login</h3>
+    <table class="comparison-table">
+        <tr><th>TC ID</th><th>Test Case</th><th>Expected Result</th></tr>
+        <tr><td>SM_01</td><td>Verify login page loads</td><td>Login page displayed with all fields</td></tr>
+        <tr><td>SM_02</td><td>Login with valid credentials</td><td>Dashboard displayed</td></tr>
+        <tr><td>SM_03</td><td>Verify logout works</td><td>User redirected to login page</td></tr>
+        <tr><td>SM_04</td><td>Verify "Forgot Password" link works</td><td>Password reset page displayed</td></tr>
+    </table>
+
+    <h3>Sample: Regression Test Cases for E-commerce</h3>
+    <table class="comparison-table">
+        <tr><th>TC ID</th><th>Test Case</th><th>Why Regression?</th></tr>
+        <tr><td>REG_01</td><td>Verify existing user can still login after new feature added</td><td>Login may be affected by new code</td></tr>
+        <tr><td>REG_02</td><td>Verify cart still calculates totals correctly</td><td>Payment module changed</td></tr>
+        <tr><td>REG_03</td><td>Verify search still returns correct results</td><td>Database schema updated</td></tr>
+        <tr><td>REG_04</td><td>Verify email notifications still sent</td><td>Email service updated</td></tr>
+    </table>
+</div>
+
+<!-- CHAPTER 6 -->
+<div class="chapter" id="ch6">
+    <h2>Chapter 6: Defect Lifecycle & Jira Workflow</h2>
+
+    <h3>Defect/Bug Lifecycle</h3>
+    <div class="flow-diagram">
+        New <span class="arrow">→</span> Assigned <span class="arrow">→</span> Open <span class="arrow">→</span> Fixed <span class="arrow">→</span> Retest <span class="arrow">→</span> Verified <span class="arrow">→</span> Closed<br><br>
+        Alternative paths:<br>
+        New <span class="arrow">→</span> Rejected (not a bug)<br>
+        New <span class="arrow">→</span> Deferred (fix later)<br>
+        New <span class="arrow">→</span> Duplicate (already reported)<br>
+        Retest <span class="arrow">→</span> Reopened (not fixed) <span class="arrow">→</span> Assigned again
+    </div>
+
+    <h4>States Explained:</h4>
+    <ul>
+        <li><strong>New:</strong> Bug reported by tester, not yet reviewed</li>
+        <li><strong>Assigned:</strong> Lead assigns to a developer</li>
+        <li><strong>Open:</strong> Developer starts working on it</li>
+        <li><strong>Fixed:</strong> Developer has fixed and deployed to test environment</li>
+        <li><strong>Retest:</strong> QA verifies the fix</li>
+        <li><strong>Verified:</strong> QA confirms fix works correctly</li>
+        <li><strong>Closed:</strong> Bug is resolved and signed off</li>
+        <li><strong>Reopened:</strong> Fix didn't work, sent back to developer</li>
+        <li><strong>Deferred:</strong> Valid bug but will fix in future release</li>
+        <li><strong>Rejected:</strong> Not a bug (works as designed)</li>
+    </ul>
+
+    <h3>Bug Report Best Practices</h3>
+    <p>A good bug report contains:</p>
+    <table class="comparison-table">
+        <tr><th>Field</th><th>Example</th></tr>
+        <tr><td>Bug ID</td><td>BUG-1234</td></tr>
+        <tr><td>Title</td><td>"Payment fails when discount > 50%"</td></tr>
+        <tr><td>Environment</td><td>Chrome 120, Windows 11, QA server</td></tr>
+        <tr><td>Steps to Reproduce</td><td>1. Login 2. Add item 3. Apply 60% coupon 4. Click Pay</td></tr>
+        <tr><td>Expected Result</td><td>Payment succeeds with discounted amount</td></tr>
+        <tr><td>Actual Result</td><td>Error: "Transaction Failed" displayed</td></tr>
+        <tr><td>Severity</td><td>High</td></tr>
+        <tr><td>Priority</td><td>High</td></tr>
+        <tr><td>Screenshots/Logs</td><td>Attached</td></tr>
+        <tr><td>Assignee</td><td>Dev team</td></tr>
+    </table>
+
+    <h3>Jira Workflow for Agile Teams</h3>
+    <div class="flow-diagram">
+        Backlog <span class="arrow">→</span> To Do <span class="arrow">→</span> In Progress <span class="arrow">→</span> In QA <span class="arrow">→</span> Done
+    </div>
+
+    <h4>Jira Concepts:</h4>
+    <ul>
+        <li><strong>Epic:</strong> Large body of work (e.g., "User Management")</li>
+        <li><strong>Story:</strong> User-facing feature (e.g., "As a user, I want to reset password")</li>
+        <li><strong>Task:</strong> Technical work (e.g., "Set up test environment")</li>
+        <li><strong>Bug:</strong> Defect found during testing</li>
+        <li><strong>Sub-task:</strong> Breakdown of story/task</li>
+    </ul>
+
+    <h4>How QA Uses Jira:</h4>
+    <ol>
+        <li>Pick story from "To Do" → move to "In Progress" (dev)</li>
+        <li>Dev completes → moves to "In QA"</li>
+        <li>QA tests → if pass, moves to "Done"</li>
+        <li>QA tests → if fail, logs bug and links to story, moves back</li>
+        <li>Bug linked to story: "Bug BUG-123 is caused by STORY-456"</li>
+    </ol>
+
+    <div class="interview-q">
+        <strong>Q: What proof is required before closing a defect?</strong><br>
+        A: Before closing: 1) Test case executed and passed, 2) Screenshots/video of working functionality, 3) Tested on required browsers/devices, 4) No related side effects found, 5) Regression tests passed, 6) Sign-off from test lead. All evidence attached to the Jira ticket.
+    </div>
+</div>
+
+<!-- CHAPTER 7 -->
+<div class="chapter" id="ch7">
+    <h2>Chapter 7: Agile Basics</h2>
+
+    <h3>What is Agile?</h3>
+    <p>Agile is an <strong>iterative and incremental</strong> approach to software development that delivers working software in short cycles (sprints), embraces changing requirements, and promotes collaboration between cross-functional teams.</p>
+
+    <div class="highlight">
+        <strong>Agile Manifesto Values:</strong><br>
+        • Individuals & interactions OVER processes & tools<br>
+        • Working software OVER comprehensive documentation<br>
+        • Customer collaboration OVER contract negotiation<br>
+        • Responding to change OVER following a plan
+    </div>
+
+    <h3>Agile vs Waterfall</h3>
+    <table class="comparison-table">
+        <tr><th>Aspect</th><th>Waterfall</th><th>Agile</th></tr>
+        <tr><td>Approach</td><td>Sequential (phase by phase)</td><td>Iterative (sprint by sprint)</td></tr>
+        <tr><td>Requirements</td><td>Fixed upfront</td><td>Evolve over time</td></tr>
+        <tr><td>Delivery</td><td>One big release at the end</td><td>Small releases every 2-4 weeks</td></tr>
+        <tr><td>Testing</td><td>After development complete</td><td>Continuous, every sprint</td></tr>
+        <tr><td>Feedback</td><td>Late (after delivery)</td><td>Early & continuous</td></tr>
+        <tr><td>Change</td><td>Difficult & costly</td><td>Welcome & expected</td></tr>
+        <tr><td>Documentation</td><td>Heavy</td><td>Light, just enough</td></tr>
+        <tr><td>Customer Involvement</td><td>Beginning & end only</td><td>Throughout the project</td></tr>
+        <tr><td>Risk</td><td>High (issues found late)</td><td>Low (issues found early)</td></tr>
+    </table>
+
+    <h3>Scrum Framework</h3>
+    <p>Scrum is the most popular Agile framework. It organizes work into fixed-length iterations called <strong>Sprints</strong> (typically 2 weeks).</p>
+
+    <h4>Scrum Roles:</h4>
+    <table class="comparison-table">
+        <tr><th>Role</th><th>Responsibility</th></tr>
+        <tr><td><strong>Product Owner (PO)</strong></td><td>• Owns the product backlog<br>• Prioritizes features by business value<br>• Writes user stories with acceptance criteria<br>• Represents the customer/stakeholders<br>• Decides what gets built and in what order</td></tr>
+        <tr><td><strong>Scrum Master (SM)</strong></td><td>• Facilitates Scrum ceremonies<br>• Removes blockers/impediments<br>• Coaches the team on Agile practices<br>• Protects team from external distractions<br>• Does NOT assign tasks or manage people</td></tr>
+        <tr><td><strong>Development Team (includes QA)</strong></td><td>• Cross-functional, self-organizing<br>• Developers build features<br>• QA designs & executes tests<br>• Team collectively owns sprint deliverables<br>• Typically 5-9 members</td></tr>
+    </table>
+
+    <h4>QA Role in Scrum:</h4>
+    <ul>
+        <li>Participates in sprint planning (estimates testing effort)</li>
+        <li>Reviews user stories and acceptance criteria</li>
+        <li>Writes test cases during the sprint</li>
+        <li>Tests features as they're developed (shift-left)</li>
+        <li>Reports bugs and verifies fixes</li>
+        <li>Participates in demos and retrospectives</li>
+        <li>Maintains regression suite</li>
+    </ul>
+
+    <h3>Sprint Cycle</h3>
+    <div class="flow-diagram">
+        Product Backlog <span class="arrow">→</span> Sprint Planning <span class="arrow">→</span> Sprint Backlog <span class="arrow">→</span> Daily Standups <span class="arrow">→</span> Development + Testing <span class="arrow">→</span> Sprint Review <span class="arrow">→</span> Sprint Retrospective <span class="arrow">→</span> Potentially Shippable Product
+    </div>
+</div>
+
+<!-- CHAPTER 8 -->
+<div class="chapter" id="ch8">
+    <h2>Chapter 8: Agile Ceremonies</h2>
+
+    <h3>1. Sprint Planning</h3>
+    <table class="comparison-table">
+        <tr><th>Aspect</th><th>Details</th></tr>
+        <tr><td>When</td><td>Beginning of each sprint</td></tr>
+        <tr><td>Duration</td><td>2-4 hours (for 2-week sprint)</td></tr>
+        <tr><td>Who</td><td>Entire Scrum team (PO + SM + Dev + QA)</td></tr>
+        <tr><td>Purpose</td><td>Decide WHAT to build this sprint and HOW</td></tr>
+        <tr><td>Output</td><td>Sprint Backlog (committed stories)</td></tr>
+    </table>
+    <p><strong>QA's role:</strong> Review acceptance criteria, estimate testing effort, identify test dependencies, raise concerns about testability.</p>
+
+    <h3>2. Daily Standup (Daily Scrum)</h3>
+    <table class="comparison-table">
+        <tr><th>Aspect</th><th>Details</th></tr>
+        <tr><td>When</td><td>Every day, same time</td></tr>
+        <tr><td>Duration</td><td>15 minutes MAX</td></tr>
+        <tr><td>Who</td><td>Development team (PO/SM optional)</td></tr>
+        <tr><td>Format</td><td>Standing meeting (keeps it short)</td></tr>
+    </table>
+
+    <p><strong>Each member answers 3 questions:</strong></p>
+    <ol>
+        <li><strong>What did I do yesterday?</strong> (e.g., "Tested login stories, found 2 bugs")</li>
+        <li><strong>What will I do today?</strong> (e.g., "Test payment module, write regression cases")</li>
+        <li><strong>Any blockers?</strong> (e.g., "Waiting for test data from dev team")</li>
+    </ol>
+
+    <div class="tip">Daily standup is for STATUS SYNC, not problem-solving. Detailed discussions happen offline ("parking lot").</div>
+
+    <h3>3. Sprint Review (Demo)</h3>
+    <table class="comparison-table">
+        <tr><th>Aspect</th><th>Details</th></tr>
+        <tr><td>When</td><td>End of sprint</td></tr>
+        <tr><td>Duration</td><td>1-2 hours</td></tr>
+        <tr><td>Who</td><td>Team + Stakeholders + PO</td></tr>
+        <tr><td>Purpose</td><td>Demo completed work, get feedback</td></tr>
+        <tr><td>Output</td><td>Feedback, updated backlog</td></tr>
+    </table>
+    <p><strong>QA's role:</strong> May demonstrate testing evidence, confirm quality of delivered features, present test metrics.</p>
+
+    <h3>4. Sprint Retrospective</h3>
+    <table class="comparison-table">
+        <tr><th>Aspect</th><th>Details</th></tr>
+        <tr><td>When</td><td>After Sprint Review, before next Sprint Planning</td></tr>
+        <tr><td>Duration</td><td>1-1.5 hours</td></tr>
+        <tr><td>Who</td><td>Scrum team only (no stakeholders)</td></tr>
+        <tr><td>Purpose</td><td>Continuous improvement — what to improve next sprint</td></tr>
+    </table>
+
+    <div class="interview-q">
+        <strong>Q: What are the Agile ceremonies and what happens in each?</strong><br>
+        A: There are 4 ceremonies: 1) Sprint Planning — team decides what to work on, 2) Daily Standup — 15-min sync on progress and blockers, 3) Sprint Review — demo completed work to stakeholders, 4) Sprint Retrospective — team reflects on what went well and what to improve. These ceremonies ensure transparency, inspection, and adaptation.
+    </div>
+</div>
+
+<!-- CHAPTER 9 -->
+<div class="chapter" id="ch9">
+    <h2>Chapter 9: Sprint Retrospective (Deep Dive)</h2>
+
+    <h3>Purpose</h3>
+    <p>The retrospective is about <strong>continuous improvement</strong>. The team reflects on the sprint process (not the product) and identifies actionable improvements for the next sprint.</p>
+
+    <h3>Three Key Questions</h3>
+    <div class="highlight">
+        <strong>1. What went well?</strong> (Keep doing)<br>
+        <strong>2. What didn't go well?</strong> (Stop or change)<br>
+        <strong>3. What can we improve?</strong> (Action items for next sprint)
+    </div>
+
+    <h3>Examples of Retrospective Insights</h3>
+    <table class="comparison-table">
+        <tr><th>What Went Well ✅</th><th>What Didn't Go Well ❌</th><th>Action Items 🎯</th></tr>
+        <tr><td>Good collaboration between dev & QA</td><td>Builds deployed late, less testing time</td><td>Dev to deploy builds by Wednesday</td></tr>
+        <tr><td>All sprint stories completed</td><td>Too many bugs found in QA</td><td>Add code review before QA handoff</td></tr>
+        <tr><td>Automation saved regression time</td><td>Requirements were unclear</td><td>PO to clarify AC before sprint planning</td></tr>
+        <tr><td>Daily standups were focused</td><td>Environment was unstable</td><td>DevOps to set up dedicated QA environment</td></tr>
+    </table>
+
+    <h3>Who Participates?</h3>
+    <ul>
+        <li>✅ Scrum Master (facilitates)</li>
+        <li>✅ Developers</li>
+        <li>✅ QA Engineers</li>
+        <li>✅ Product Owner (optional but recommended)</li>
+        <li>❌ Stakeholders / Management (NOT invited — safe space for team)</li>
+    </ul>
+
+    <div class="interview-q">
+        <strong>Q: Give an example of an improvement from retrospective.</strong><br>
+        A: In one sprint, we noticed QA was getting builds very late (Thursday) leaving only 1 day to test. In the retrospective, we agreed that developers would deploy testable features by Wednesday, giving QA 2 days. We also introduced a "dev-done" checklist to reduce bugs reaching QA. This improved our sprint completion rate from 70% to 90%.
+    </div>
+</div>
+
+<!-- CHAPTER 10 -->
+<div class="chapter" id="ch10">
+    <h2>Chapter 10: User Stories & Estimation</h2>
+
+    <h3>User Story Format</h3>
+    <div class="highlight">
+        <strong>As a</strong> [type of user],<br>
+        <strong>I want</strong> [some goal/action],<br>
+        <strong>So that</strong> [some reason/benefit].
+    </div>
+
+    <div class="example">
+        <strong>As a</strong> registered customer,<br>
+        <strong>I want</strong> to reset my password via email,<br>
+        <strong>So that</strong> I can regain access to my account if I forget my password.
+    </div>
+
+    <h3>INVEST Principle (Good User Story Criteria)</h3>
+    <table class="comparison-table">
+        <tr><th>Letter</th><th>Meaning</th><th>Explanation</th></tr>
+        <tr><td><strong>I</strong></td><td>Independent</td><td>Can be developed without depending on other stories</td></tr>
+        <tr><td><strong>N</strong></td><td>Negotiable</td><td>Details can be discussed and refined</td></tr>
+        <tr><td><strong>V</strong></td><td>Valuable</td><td>Delivers value to the user/business</td></tr>
+        <tr><td><strong>E</strong></td><td>Estimable</td><td>Team can estimate the effort needed</td></tr>
+        <tr><td><strong>S</strong></td><td>Small</td><td>Can be completed in one sprint</td></tr>
+        <tr><td><strong>T</strong></td><td>Testable</td><td>Has clear acceptance criteria to verify</td></tr>
+    </table>
+
+    <h3>Acceptance Criteria</h3>
+    <p>Conditions that must be met for the story to be considered "done." Written in Given-When-Then format:</p>
+    <div class="example">
+        <strong>Given</strong> I am on the login page,<br>
+        <strong>When</strong> I enter valid username and password and click Login,<br>
+        <strong>Then</strong> I should be redirected to the dashboard and see a welcome message.
+    </div>
+
+    <h3>Story Points</h3>
+    <p>A <strong>relative measure of effort</strong> required to complete a user story. NOT hours or days — it combines complexity, effort, and risk.</p>
+
+    <h3>Fibonacci Sequence for Estimation</h3>
+    <p>Teams use Fibonacci numbers: <strong>1, 2, 3, 5, 8, 13, 21</strong></p>
+    <ul>
+        <li><strong>1 point:</strong> Very simple (change button color)</li>
+        <li><strong>2 points:</strong> Simple (add a validation message)</li>
+        <li><strong>3 points:</strong> Medium (create a form with validations)</li>
+        <li><strong>5 points:</strong> Complex (build search with filters)</li>
+        <li><strong>8 points:</strong> Very complex (payment integration)</li>
+        <li><strong>13 points:</strong> Extremely complex (consider breaking down)</li>
+        <li><strong>21 points:</strong> Too large — MUST be broken into smaller stories</li>
+    </ul>
+
+    <div class="tip">Why Fibonacci? The gaps increase because uncertainty grows with complexity. The difference between 5 and 8 is more meaningful than between 5 and 6.</div>
+
+    <h3>Planning Poker</h3>
+    <p>A <strong>collaborative estimation technique</strong> where the whole team estimates together:</p>
+    <ol>
+        <li>PO reads the user story and acceptance criteria</li>
+        <li>Team discusses and asks questions</li>
+        <li>Each member privately selects a card (1, 2, 3, 5, 8, 13...)</li>
+        <li>All cards revealed simultaneously</li>
+        <li>If estimates differ significantly → discuss reasoning</li>
+        <li>Re-vote until consensus reached</li>
+    </ol>
+
+    <div class="interview-q">
+        <strong>Q: What is Planning Poker and why is it used?</strong><br>
+        A: Planning Poker is a consensus-based estimation technique where team members independently estimate story points using Fibonacci cards, then reveal simultaneously. It prevents anchoring bias (where someone's opinion influences others), encourages discussion about complexity, and leverages the collective wisdom of the team. It ensures everyone's perspective is considered.
+    </div>
+</div>
+
+<!-- CHAPTER 11 -->
+<div class="chapter" id="ch11">
+    <h2>Chapter 11: Story Points & Velocity</h2>
+
+    <h3>Story Points vs Time</h3>
+    <table class="comparison-table">
+        <tr><th>Story Points</th><th>Time (Hours/Days)</th></tr>
+        <tr><td>Relative measure</td><td>Absolute measure</td></tr>
+        <tr><td>Considers complexity + risk + effort</td><td>Only considers duration</td></tr>
+        <tr><td>Team-specific (5 points means different things to different teams)</td><td>Universal (8 hours = 8 hours)</td></tr>
+        <tr><td>Doesn't change with experience</td><td>Faster developer = fewer hours</td></tr>
+        <tr><td>Accounts for unknowns</td><td>Often underestimated</td></tr>
+    </table>
+
+    <div class="example">
+        A 5-point story might take a senior developer 4 hours but a junior developer 12 hours. The complexity is the same (5 points) — the time differs based on skill. That's why we estimate in points, not hours.
+    </div>
+
+    <h3>Estimation Factors</h3>
+    <ul>
+        <li><strong>Complexity:</strong> How difficult is the logic? How many edge cases?</li>
+        <li><strong>Risk/Uncertainty:</strong> Are requirements clear? Is it new technology?</li>
+        <li><strong>Effort:</strong> How much work is involved? How many components affected?</li>
+        <li><strong>Dependencies:</strong> Does it depend on other teams or external systems?</li>
+    </ul>
+
+    <h3>Velocity</h3>
+    <p><strong>Definition:</strong> The average number of story points a team completes per sprint.</p>
+
+    <div class="example">
+        Sprint 1: Completed 20 points<br>
+        Sprint 2: Completed 25 points<br>
+        Sprint 3: Completed 22 points<br>
+        <strong>Average Velocity = (20 + 25 + 22) / 3 = ~22 points/sprint</strong>
+    </div>
+
+    <h4>How Velocity Impacts Sprint Planning:</h4>
+    <ul>
+        <li>If velocity is 22, the team should commit to ~22 points of work next sprint</li>
+        <li>Helps predict how many sprints needed to complete the backlog</li>
+        <li>Used for release planning: "With 100 points remaining and velocity of 22, we need ~5 sprints"</li>
+        <li>Velocity stabilizes after 3-4 sprints — use it for forecasting</li>
+    </ul>
+
+    <div class="interview-q">
+        <strong>Q: How does the Scrum Master help with estimation?</strong><br>
+        A: The Scrum Master facilitates Planning Poker, ensures discussions stay productive, helps the team understand the story, and prevents pressure from PO/management to underestimate. They do NOT estimate themselves (unless also doing development work). They coach the team on relative estimation and remind them to consider complexity, risk, and uncertainty — not just time.
+    </div>
+</div>
+
+<!-- CHAPTER 12 -->
+<div class="chapter" id="ch12">
+    <h2>Chapter 12: Story Completion & Definition of Done (DoD)</h2>
+
+    <h3>Definition of Done (DoD)</h3>
+    <p>A <strong>shared checklist</strong> that defines when a user story is truly "complete." It's agreed upon by the entire team and applies to ALL stories.</p>
+
+    <div class="highlight">
+        <strong>Typical Definition of Done:</strong><br>
+        ✅ Code written and peer-reviewed<br>
+        ✅ Unit tests written and passing<br>
+        ✅ Feature deployed to QA environment<br>
+        ✅ All acceptance criteria verified by QA<br>
+        ✅ No open critical/high bugs<br>
+        ✅ Regression tests passed<br>
+        ✅ Documentation updated (if needed)<br>
+        ✅ Demo-ready for sprint review
+    </div>
+
+    <h3>Who Marks a Story as Done?</h3>
+    <ul>
+        <li><strong>Developer:</strong> Marks as "Ready for QA" after coding & unit testing</li>
+        <li><strong>QA:</strong> Tests and moves to "Done" if all acceptance criteria pass</li>
+        <li><strong>Product Owner:</strong> Final acceptance in Sprint Review (validates business value)</li>
+        <li><strong>Scrum Master:</strong> Does NOT mark stories as done — they facilitate, not manage</li>
+    </ul>
+
+    <div class="interview-q">
+        <strong>Q: Can the Scrum Master mark a story as complete?</strong><br>
+        A: No. The Scrum Master is a facilitator, not a decision-maker on completeness. The Development Team (including QA) determines if the DoD is met. The Product Owner validates that the acceptance criteria satisfy the business need. The Scrum Master only ensures the process is followed correctly.
+    </div>
+
+    <h3>Evidence Required for Completion</h3>
+    <table class="comparison-table">
+        <tr><th>Evidence</th><th>Purpose</th></tr>
+        <tr><td>Test case execution report</td><td>Proves all scenarios tested</td></tr>
+        <tr><td>Screenshots/videos</td><td>Visual proof of working feature</td></tr>
+        <tr><td>Bug reports (all closed)</td><td>Shows all issues resolved</td></tr>
+        <tr><td>Regression test results</td><td>Confirms no side effects</td></tr>
+        <tr><td>Cross-browser/device results</td><td>Confirms compatibility</td></tr>
+        <tr><td>Performance metrics (if applicable)</td><td>Meets non-functional requirements</td></tr>
+    </table>
+
+    <h3>Acceptance Criteria vs Definition of Done</h3>
+    <table class="comparison-table">
+        <tr><th>Acceptance Criteria</th><th>Definition of Done</th></tr>
+        <tr><td>Specific to ONE story</td><td>Applies to ALL stories</td></tr>
+        <tr><td>Written by Product Owner</td><td>Agreed by entire team</td></tr>
+        <tr><td>Defines WHAT the feature should do</td><td>Defines quality standards for completion</td></tr>
+        <tr><td>Example: "User can login with email"</td><td>Example: "Code reviewed, tests passed, deployed"</td></tr>
+    </table>
+</div>
+
+<!-- CHAPTER 13 -->
+<div class="chapter" id="ch13">
+    <h2>Chapter 13: Regression Strategy</h2>
+
+    <h3>When to Run Regression</h3>
+    <ul>
+        <li>After every bug fix (to ensure fix didn't break anything)</li>
+        <li>After new feature addition</li>
+        <li>After code refactoring or optimization</li>
+        <li>Before every release/deployment</li>
+        <li>After environment changes (server, database, OS update)</li>
+        <li>After merging code branches</li>
+    </ul>
+
+    <h3>Regression Test Suite</h3>
+    <p>A <strong>maintained collection of test cases</strong> that covers critical business flows and previously found bug areas. It grows over time.</p>
+
+    <h4>How to Build a Regression Suite:</h4>
+    <ol>
+        <li><strong>Core flows:</strong> Login, Registration, Payment, Search (always include)</li>
+        <li><strong>Bug-prone areas:</strong> Modules where bugs were frequently found</li>
+        <li><strong>High-business-value features:</strong> Revenue-generating features</li>
+        <li><strong>Integration points:</strong> Where modules connect</li>
+        <li><strong>Recently changed areas:</strong> Code that was recently modified</li>
+    </ol>
+
+    <h3>Manual vs Automation Regression</h3>
+    <table class="comparison-table">
+        <tr><th>Aspect</th><th>Manual Regression</th><th>Automated Regression</th></tr>
+        <tr><td>Speed</td><td>Slow (hours/days)</td><td>Fast (minutes/hours)</td></tr>
+        <tr><td>Cost per run</td><td>High (human effort each time)</td><td>Low (once built, runs free)</td></tr>
+        <tr><td>Accuracy</td><td>Human errors possible</td><td>Consistent every time</td></tr>
+        <tr><td>Best when</td><td>Suite is small, UI changes frequently</td><td>Suite is large, stable features</td></tr>
+        <tr><td>CI/CD</td><td>Cannot integrate</td><td>Runs automatically on every build</td></tr>
+    </table>
+
+    <h3>CI/CD Integration</h3>
+    <p><strong>CI (Continuous Integration):</strong> Developers merge code frequently; automated tests run on every merge.</p>
+    <p><strong>CD (Continuous Delivery/Deployment):</strong> Code is automatically deployed after tests pass.</p>
+
+    <div class="flow-diagram">
+        Developer pushes code <span class="arrow">→</span> CI server builds <span class="arrow">→</span> Automated regression runs <span class="arrow">→</span> If pass: deploy to QA <span class="arrow">→</span> If fail: notify team
+    </div>
+
+    <div class="interview-q">
+        <strong>Q: What are the challenges in regression testing?</strong><br>
+        A: 1) Time-consuming — suite grows with every sprint, 2) Maintaining test cases as UI/features change, 3) Deciding what to include (can't test everything), 4) Flaky tests giving false failures, 5) Environment dependencies. Solutions: Prioritize critical paths, automate stable tests, use risk-based testing approach, maintain test data properly.
+    </div>
+</div>
+
+<!-- CHAPTER 14 -->
+<div class="chapter" id="ch14">
+    <h2>Chapter 14: Basics of Automation Testing</h2>
+
+    <h3>Why Automation is Needed</h3>
+    <ul>
+        <li>Manual regression takes too long as the app grows</li>
+        <li>Repetitive tests are boring and error-prone for humans</li>
+        <li>Faster feedback in CI/CD pipelines</li>
+        <li>Run tests 24/7 without human intervention</li>
+        <li>Cross-browser/device testing at scale</li>
+        <li>Consistent and reliable results</li>
+    </ul>
+
+    <h3>Popular Automation Tools</h3>
+    <table class="comparison-table">
+        <tr><th>Tool</th><th>Type</th><th>Language</th><th>Best For</th></tr>
+        <tr><td><strong>Selenium</strong></td><td>Web UI</td><td>Java, Python, C#</td><td>Cross-browser web testing</td></tr>
+        <tr><td><strong>Cypress</strong></td><td>Web UI</td><td>JavaScript</td><td>Modern web apps, fast execution</td></tr>
+        <tr><td><strong>Postman</strong></td><td>API</td><td>JavaScript</td><td>REST API testing</td></tr>
+        <tr><td><strong>Appium</strong></td><td>Mobile</td><td>Java, Python</td><td>Android/iOS testing</td></tr>
+        <tr><td><strong>JUnit/TestNG</strong></td><td>Unit</td><td>Java</td><td>Unit testing frameworks</td></tr>
+        <tr><td><strong>Playwright</strong></td><td>Web UI</td><td>JS, Python, Java</td><td>Modern web testing, auto-wait</td></tr>
+    </table>
+
+    <h3>What to Automate vs Not Automate</h3>
+    <table class="comparison-table">
+        <tr><th>✅ Automate</th><th>❌ Don't Automate</th></tr>
+        <tr><td>Regression test cases</td><td>Exploratory testing</td></tr>
+        <tr><td>Smoke tests (run on every build)</td><td>One-time test cases</td></tr>
+        <tr><td>Data-driven tests (many input combinations)</td><td>Tests for frequently changing UI</td></tr>
+        <tr><td>Cross-browser/device tests</td><td>Usability/UX testing</td></tr>
+        <tr><td>API tests</td><td>Ad-hoc testing</td></tr>
+        <tr><td>Performance/load tests</td><td>Tests requiring human judgment</td></tr>
+    </table>
+
+    <h3>Test Pyramid</h3>
+    <div class="flow-diagram">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/  UI Tests  \&nbsp;&nbsp;&nbsp;&nbsp;← Few, slow, expensive<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;/ Integration Tests \&nbsp;&nbsp;← Medium<br>
+        &nbsp;&nbsp;/&nbsp;&nbsp;&nbsp;&nbsp;Unit Tests&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;\&nbsp;← Many, fast, cheap
+    </div>
+    <ul>
+        <li><strong>Unit Tests (Base — 70%):</strong> Fast, test individual functions, run by developers</li>
+        <li><strong>Integration/API Tests (Middle — 20%):</strong> Test module interactions, API responses</li>
+        <li><strong>UI/E2E Tests (Top — 10%):</strong> Slow, brittle, test complete user flows</li>
+    </ul>
+
+    <div class="tip">The pyramid suggests: have MANY unit tests, SOME integration tests, and FEW UI tests. Most bugs should be caught at lower levels.</div>
+
+    <h3>Basic Automation Framework Concepts</h3>
+    <ul>
+        <li><strong>Page Object Model (POM):</strong> Each page has a class with its elements and actions</li>
+        <li><strong>Data-Driven Testing:</strong> Same test runs with different data sets</li>
+        <li><strong>Keyword-Driven:</strong> Actions described by keywords (Click, Enter, Verify)</li>
+        <li><strong>Hybrid Framework:</strong> Combination of above approaches</li>
+    </ul>
+
+    <div class="interview-q">
+        <strong>Q: What test cases should be automated first?</strong><br>
+        A: 1) Smoke tests — run on every build, 2) Regression tests for stable features — repetitive and time-consuming, 3) Data-driven tests — same flow with many data combinations, 4) API tests — fast ROI, less maintenance than UI tests. Start with high-value, stable, frequently-run tests. Avoid automating tests for features still changing rapidly.
+    </div>
+</div>
+
+<!-- CHAPTER 15 -->
+<div class="chapter" id="ch15">
+    <h2>Chapter 15: Agile Testing in Real-Time Project</h2>
+
+    <h3>Testing Across Sprints</h3>
+    <table class="comparison-table">
+        <tr><th>Sprint</th><th>Testing Focus</th><th>QA Activities</th></tr>
+        <tr><td><strong>Sprint 1</strong></td><td>Foundation + Exploration</td><td>• Smoke testing of initial build<br>• Exploratory testing<br>• Write initial test cases<br>• Set up test environment<br>• Understand requirements deeply</td></tr>
+        <tr><td><strong>Sprint 2</strong></td><td>Integration + Regression</td><td>• Integration testing (modules connecting)<br>• Start regression suite<br>• Sanity testing of fixes<br>• API testing begins<br>• Identify automation candidates</td></tr>
+        <tr><td><strong>Sprint 3</strong></td><td>Security + Performance</td><td>• Security testing (authentication, authorization)<br>• Performance testing (load, response times)<br>• Full regression<br>• Non-functional testing<br>• Automation scripts development</td></tr>
+        <tr><td><strong>Sprint 4</strong></td><td>UAT + Release</td><td>• User Acceptance Testing support<br>• Final regression<br>• Release sign-off<br>• Test closure report<br>• Knowledge transfer documentation</td></tr>
+    </table>
+
+    <h3>QA Role Evolution Across Sprints</h3>
+    <table class="comparison-table">
+        <tr><th>Phase</th><th>QA Role</th><th>Key Activities</th></tr>
+        <tr><td>Sprint 1</td><td><strong>🤝 Collaborator</strong></td><td>Understands requirements, participates in planning, asks questions, identifies risks</td></tr>
+        <tr><td>Sprint 2</td><td><strong>🔨 Builder</strong></td><td>Builds test suite, creates test data, establishes processes, starts automation</td></tr>
+        <tr><td>Sprint 3</td><td><strong>🛡️ Quality Advocate</strong></td><td>Ensures quality gates are met, pushes for non-functional testing, champions best practices</td></tr>
+        <tr><td>Sprint 4</td><td><strong>🚪 Release Gatekeeper</strong></td><td>Final sign-off, ensures all criteria met, validates production readiness, generates reports</td></tr>
+    </table>
+
+    <h3>Real-Time Daily QA Workflow in Agile Sprint</h3>
+    <div class="flow-diagram">
+        Morning: Daily Standup (15 min)<br>
+        <span class="arrow">↓</span><br>
+        Review new builds/deployments<br>
+        <span class="arrow">↓</span><br>
+        Execute test cases for current stories<br>
+        <span class="arrow">↓</span><br>
+        Log bugs in Jira (with evidence)<br>
+        <span class="arrow">↓</span><br>
+        Retest fixed bugs<br>
+        <span class="arrow">↓</span><br>
+        Update test case status<br>
+        <span class="arrow">↓</span><br>
+        Prepare for next day / Update regression suite
+    </div>
+
+    <div class="interview-q">
+        <strong>Q: Explain how testing evolves in Agile sprints.</strong><br>
+        A: In Agile, testing starts from day 1 and evolves each sprint. Sprint 1 focuses on understanding the product and exploratory testing. Sprint 2 introduces integration testing as modules connect. Sprint 3 adds non-functional testing (security, performance) as the product stabilizes. Sprint 4 focuses on UAT and release readiness. The QA role evolves from Collaborator → Builder → Quality Advocate → Release Gatekeeper. Testing is continuous, not a phase — it's embedded in every sprint activity.
+    </div>
+</div>
+
+<!-- FINAL INTERVIEW PREP -->
+<div class="chapter" style="border-left-color: #e53e3e;">
+    <h2>🎯 Final Interview Preparation</h2>
+
+    <h3>Practical Assignment: Login + Registration System</h3>
+
+    <h4>Smoke Test Cases:</h4>
+    <table class="comparison-table">
+        <tr><th>#</th><th>Test Case</th><th>Expected</th></tr>
+        <tr><td>1</td><td>Login page loads successfully</td><td>All fields, buttons visible</td></tr>
+        <tr><td>2</td><td>Login with valid credentials</td><td>Dashboard displayed</td></tr>
+        <tr><td>3</td><td>Registration page accessible</td><td>Form fields visible</td></tr>
+        <tr><td>4</td><td>Register new user successfully</td><td>Confirmation message shown</td></tr>
+        <tr><td>5</td><td>Logout functionality works</td><td>Returns to login page</td></tr>
+    </table>
+
+    <h4>Sanity Test Cases (After bug fix: "Email validation not working"):</h4>
+    <table class="comparison-table">
+        <tr><th>#</th><th>Test Case</th><th>Expected</th></tr>
+        <tr><td>1</td><td>Register with invalid email (no @)</td><td>Error: "Invalid email format"</td></tr>
+        <tr><td>2</td><td>Register with valid email</td><td>Registration succeeds</td></tr>
+        <tr><td>3</td><td>Register with email missing domain</td><td>Error message shown</td></tr>
+        <tr><td>4</td><td>Login with the newly registered valid email</td><td>Login succeeds</td></tr>
+    </table>
+
+    <h4>Integration Test Cases:</h4>
+    <table class="comparison-table">
+        <tr><th>#</th><th>Test Case</th><th>Modules Involved</th></tr>
+        <tr><td>1</td><td>Register → data saved in database → Login with same credentials</td><td>UI + DB + Auth</td></tr>
+        <tr><td>2</td><td>Register → Confirmation email sent</td><td>UI + Email Service</td></tr>
+        <tr><td>3</td><td>Login → Session created → Access protected pages</td><td>Auth + Session + UI</td></tr>
+        <tr><td>4</td><td>Password reset → Email link → New password works</td><td>UI + Email + DB + Auth</td></tr>
+    </table>
+
+    <h4>Sample Defect Report:</h4>
+    <table class="comparison-table">
+        <tr><td><strong>Bug ID</strong></td><td>BUG-101</td></tr>
+        <tr><td><strong>Title</strong></td><td>Login allows empty password field</td></tr>
+        <tr><td><strong>Severity</strong></td><td>High</td></tr>
+        <tr><td><strong>Priority</strong></td><td>High</td></tr>
+        <tr><td><strong>Steps</strong></td><td>1. Open login page 2. Enter valid username 3. Leave password empty 4. Click Login</td></tr>
+        <tr><td><strong>Expected</strong></td><td>Error: "Password is required"</td></tr>
+        <tr><td><strong>Actual</strong></td><td>System attempts login and shows server error 500</td></tr>
+        <tr><td><strong>Environment</strong></td><td>Chrome 120, Windows 11, QA Server</td></tr>
+        <tr><td><strong>Evidence</strong></td><td>Screenshot attached, Console error logged</td></tr>
+    </table>
+
+    <h3>Top 20 Interview Questions & Answers Summary</h3>
+    <ol>
+        <li><strong>What is Agile?</strong> — Iterative development delivering working software in sprints</li>
+        <li><strong>Agile vs Waterfall?</strong> — Iterative vs Sequential, flexible vs rigid</li>
+        <li><strong>What is a Sprint?</strong> — Fixed time-box (2-4 weeks) to deliver increment</li>
+        <li><strong>Scrum Roles?</strong> — PO (what to build), SM (facilitate), Team (how to build)</li>
+        <li><strong>Agile Ceremonies?</strong> — Planning, Standup, Review, Retrospective</li>
+        <li><strong>What is Smoke Testing?</strong> — Quick build validation, wide & shallow</li>
+        <li><strong>What is Sanity Testing?</strong> — Focused validation of specific fix, narrow & deep</li>
+        <li><strong>Regression vs Retesting?</strong> — Check other areas vs verify same bug fixed</li>
+        <li><strong>Story Points?</strong> — Relative effort estimate (complexity + risk + effort)</li>
+        <li><strong>What is Velocity?</strong> — Average story points completed per sprint</li>
+        <li><strong>Definition of Done?</strong> — Team's checklist for story completion</li>
+        <li><strong>How to write a User Story?</strong> — As a [user], I want [goal], so that [benefit]</li>
+        <li><strong>Planning Poker?</strong> — Team estimates simultaneously with Fibonacci cards</li>
+        <li><strong>Defect Lifecycle?</strong> — New → Assigned → Fixed → Retest → Closed</li>
+        <li><strong>Priority vs Severity?</strong> — How quick to fix vs how badly it impacts</li>
+        <li><strong>What is Integration Testing?</strong> — Testing module interactions</li>
+        <li><strong>EP & BVA?</strong> — Partition inputs into groups; test at boundaries</li>
+        <li><strong>What to Automate?</strong> — Regression, smoke, data-driven, stable features</li>
+        <li><strong>Test Pyramid?</strong> — Many unit, some API, few UI tests</li>
+        <li><strong>QA in Retrospective?</strong> — Share what went well, propose improvements</li>
+    </ol>
+</div>
+
+<!-- STUDY PLAN -->
+<div class="chapter" style="border-left-color: #805ad5;">
+    <h2>📅 4-Week Study Plan</h2>
+    <table class="comparison-table">
+        <tr><th>Week</th><th>Focus</th><th>Chapters</th></tr>
+        <tr><td><strong>Week 1</strong></td><td>Testing Fundamentals</td><td>Chapters 1-3 (Basics, Types, Smoke/Sanity/Regression)</td></tr>
+        <tr><td><strong>Week 2</strong></td><td>Test Design & Defects</td><td>Chapters 4-6 (Integration, Test Cases, Defect/Jira)</td></tr>
+        <tr><td><strong>Week 3</strong></td><td>Agile & Scrum</td><td>Chapters 7-12 (Agile, Ceremonies, Stories, DoD)</td></tr>
+        <tr><td><strong>Week 4</strong></td><td>Advanced & Practice</td><td>Chapters 13-15 + Mock Interviews</td></tr>
+    </table>
+</div>
+
+</div>
+</body>
+</html>
